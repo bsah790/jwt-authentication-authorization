@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories(repositoryBaseClass = RefreshableCRUDRepositoryImpl.class)
 @SpringBootApplication
 public class JwtImplementationApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(JwtImplementationApplication.class, args);
 	}

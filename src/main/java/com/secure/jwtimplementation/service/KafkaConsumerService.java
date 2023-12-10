@@ -12,6 +12,9 @@ public class KafkaConsumerService {
 
     @Autowired
     private MessageRepository messageRepository;
+
+    @Autowired
+    EmailService emailService;
     private static final String TOPIC_NAME = "employee-topic";
 
     @KafkaListener(topics = TOPIC_NAME, groupId = "employee-consumer-group")
@@ -20,6 +23,8 @@ public class KafkaConsumerService {
         ConsumeMessage message = new ConsumeMessage();
         message.setMessage(employee.toString());
         messageRepository.save(message);
+        // sending notification
+        emailService.sendMail();
         System.out.println("Received employee: " + employee);
     }
 }
